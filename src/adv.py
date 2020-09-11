@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -21,6 +22,9 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
+directions = ['n','s','e','w']
+
+
 
 # Link rooms together
 
@@ -38,6 +42,45 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+
+player1 = Player('Player1', 'outside')
+
+# print(player1.name)
+# print(player1)
+
+startingPoint = 0
+currentRoom = player1.currentRoom
+
+active = True
+
+while active == True:
+
+    print(f'The player is currently in {currentRoom} ')
+    print(room[player1.currentRoom].description)
+
+    print(' You can go to the following directions')
+    
+    for i, d in enumerate(directions):
+       print("  " + str(i+1) + ": " + directions[i]) 
+
+
+    print("  " + "q" + ": " + "quit")
+
+
+    selection = input('what way would you like to go to?')
+   
+
+    try:
+        
+        if selection == "q":
+            print('quitting')
+            active = False
+        elif int(selection) > 0 and int(selection) <= len(directions) + 1:
+            print('hi')
+            # active = False
+
+    except ValueError:
+        print('please try again')
 
 # Write a loop that:
 #
