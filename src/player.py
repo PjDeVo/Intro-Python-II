@@ -2,11 +2,13 @@
 # currently.
 
 from room import Room
+from item import Item
 
 class Player(Room):
-    def __init__(self, name, currentRoom):
+    def __init__(self, name, currentRoom, inventory):
         self.name = name
         self.currentRoom = currentRoom
+        self.inventory = []
 
 
     def walk(self, direction):
@@ -18,7 +20,7 @@ class Player(Room):
             nextRoom = getattr(self.currentRoom, f"{direction}_to")
 
             if nextRoom == None:
-                print('sorry, you can not go that way')
+                print('SORRY, YOU CAN NOT GO THAT WAY')
             else:
                 self.currentRoom = nextRoom
                 print(self.currentRoom)
@@ -26,6 +28,14 @@ class Player(Room):
 
         except:
             AttributeError
+
+        
+    def pickUpItem(self,item):
+        self.inventory = self.inventory.append(item)
+
+    def dropItem(self, item):
+        self.inventory = self.inventory.remove(Item)
+
             
 
              
