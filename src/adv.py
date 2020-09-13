@@ -43,7 +43,7 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-player1 = Player('Player1', 'outside')
+player1 = Player('Player1', room["outside"])
 
 # print(player1.name)
 # print(player1)
@@ -56,7 +56,7 @@ active = True
 while active == True:
 
     print(f'The player is currently in {currentRoom} ')
-    print(room[player1.currentRoom].description)
+    print(player1.currentRoom.description)
 
     print(' You can go to the following directions')
     
@@ -76,7 +76,7 @@ while active == True:
             print('quitting')
             active = False
         elif int(selection) > 0 and int(selection) <= len(directions) + 1:
-            print('hi')
+            player1.walk(directions[int(selection) -1])
             # active = False
 
     except ValueError:

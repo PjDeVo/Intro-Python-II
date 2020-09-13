@@ -8,6 +8,24 @@ class Player(Room):
         self.name = name
         self.currentRoom = currentRoom
 
-    def __str__(self,):
-        return f"{super().__str__()}"
+
+    def walk(self, direction):
+
+        print(self.currentRoom)
+
+        try:    
+
+            nextRoom = getattr(self.currentRoom, f"{direction}_to")
+
+            if nextRoom == None:
+                print('sorry, you can not go that way')
+            else:
+                self.currentRoom = nextRoom
+                print(self.currentRoom)
+            
+
+        except:
+            AttributeError
+            
+
              
